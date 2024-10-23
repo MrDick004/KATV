@@ -1,0 +1,8 @@
+<addon id="plugin.video.iptv" version="0.0.1" name="KATV" provider-name="Mirko">
+    <extension point="xbmc.python.script" library="default.py" />
+    <extension point="xbmc.addon.metadata">
+        <summary>Un semplice addon IPTV</summary>
+        <description>Questo addon permette di visualizzare liste IPTV.</description>
+        <platform>all</platform>
+    </extension>
+</addon>
