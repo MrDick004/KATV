@@ -3,7 +3,7 @@ import xbmcgui
 import requests
 
 def main():
-    url = 'https://iptv-org.github.io/italy'  # Sostituisci con l'URL della tua lista IPTV
+    url = 'https://github.com/Tundrak/IPTV-Italia/raw/main/iptvita.m3u'  # Sostituisci con l'URL della tua lista IPTV
     response = requests.get(url)
     if response.status_code == 200:
         # Elenco dei canali
