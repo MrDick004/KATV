@@ -1,8 +1,8 @@
-<addon id="plugin.video.iptv" version="0.0.1" name="KATV" provider-name="Mirko">
+<addon id="plugin.video.streamingcommunity" version="1.0.0" name="Streaming Community" provider-name="Il tuo nome">
     <extension point="xbmc.python.script" library="default.py" />
     <extension point="xbmc.addon.metadata">
-        <summary>Un semplice addon IPTV</summary>
-        <description>Questo addon permette di visualizzare liste IPTV.</description>
+        <summary>Addon per vedere video da Streaming Community</summary>
+        <description>Questo addon permette di cercare e visualizzare video dal sito Streaming Community.</description>
         <platform>all</platform>
     </extension>
 </addon>
