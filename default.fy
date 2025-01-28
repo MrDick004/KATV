@@ -1,29 +1,29 @@
 import sys
 import xbmc
 import xbmcgui
+import xbmcplugin
 import requests
 from bs4 import BeautifulSoup
 
-def search_videos(query):
-    url = f'https://www.cb01.com/search?q={query}'
+# Imposta il plugin
+addon_id = 'plugin.video.streamingcommunity'
+plugin = int(sys.argv[1])
+
+def list_videos(query):
+    url = f"https://streamingcommunity.paris/search?q={query}"
     response = requests.get(url)
     soup = BeautifulSoup(response.content, 'html.parser')
 
-    # Esempio di estrazione dei video (modifica in base alla struttura del sito)
-    for link in soup.find_all('a', class_='video-link'):
-        video_url = link.get('href')
-        title = link.get('title')
-        xbmcgui.Dialog().ok(title, video_url)
+    # Esempio di parsing dei video
+    for video in soup.find_all('div', class_='video-class'):  # Modifica con la classe corretta
+        title = video.find('h3').text
+        video_url = video.find('a')['href']
+        # Aggiungi il video alla lista
+        xbmcplugin.addDirectoryItem(plugin, video_url, xbmcgui.ListItem(label=title), isFolder=False)
 
-def main():
-    # Mostra un dialogo per la ricerca
-    keyboard = xbmc.Keyboard('', 'Cerca video')
-    keyboard.doModal()
-    if keyboard.isConfirmed():
-        query = keyboard.getText()
-        if query:
-            search_videos(query)
+    xbmcplugin.endOfDirectory(plugin)
 
 if __name__ == '__main__':
-    main()
+    query = xbmcgui.Dialog().input("Cerca video")
+    list_videos(query)
 
